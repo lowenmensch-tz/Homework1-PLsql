@@ -20,4 +20,29 @@ registro en la tabla LOGS con la información del error. El trigger es el que de
   - nombreEmp VARCHAR2(100)
   - direccionEmp VARCHAR2(255)
   - telefonoEmp NUMBER(15)
-  - identidad NUMBER(15) y que se tiene la siguiente declaración de variables
+  - identidad NUMBER(15) y que se tiene la siguiente declaración de variables:
+
+```SQL
+DECLARE
+var1 emp%ROWTYPE;
+va2 emp.nombre%TYPE;
+var3 emp%ROWTYPE;
+CURSOR cEmp IS SELECT nombreEmp, direccionEmp, telefonoEmp, identidad
+FROM EMP;
+CURSOR cNomTelEmp IS SELECT nombreEmp, telefonoEmp FROM EMP;
+var4 cEmp%ROWTYPE;
+var5 emp.telefono%TYPE;
+var6 cNomTelEmp%ROWTYPE;
+```
+
+¿Serían correctas las siguientes asignaciones?
+```SQL
+var1:=var3;
+var4:=var1;
+SELECT identidad INTO var5 FROM EMP;
+var3:= var6;
+var2:=Luis Escoto 1
+```
+
+Explique las razones del por qué si son válidas o por qué no son válidas. Para proporcionar una respuesta, no se debe tomar en cuenta si la variable se inicializó o no, lo
+que se pide es dar una respuesta si la asignación se puede realizar. 
